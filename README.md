@@ -148,74 +148,77 @@ These parameters allow users to fine-tune the balance between creativity, cohere
     streamlit run text_generation_service/ui.py
     ```
     
-5. Testing the API:
-    Open [http://localhost:8000/docs](http://localhost:8000/docs) for interactive Swagger docs.
-    Use a tool like **curl** or **Postman** to test the /generate endpoint:
-        ```
-        curl -X POST "http://localhost:8000/generate" \
-        -H "Content-Type: application/json" \
-        -d '{"prompt": "What is AI?", "max_new_tokens": 50}'
-        ```
+5. Testing the API: 
+   Open [http://localhost:8000/docs](http://localhost:8000/docs) for interactive Swagger docs.  
+   Use a tool like **curl** or **Postman** to test the `/generate` endpoint:
+
+   ```bash
+   curl -X POST "http://localhost:8000/generate" \
+   -H "Content-Type: application/json" \
+   -d '{"prompt": "What is AI?", "max_new_tokens": 50}'
 
 ### Option 2: Running with Dockerfile:
 
-1. Clone the repository:
+1. **Clone the repository**:
    ```
    git clone https://github.com/kartheek3197/text-generation-service.git
    cd text-generation-service
    ```
 
-2. Building the Docker image:
+2. **Building the Docker image**:
     ```
     docker build -t text-generator:latest .
     ```
 
-3. Running the Docker image:
+3. **Running the Docker image**:
     If you want to run the Docker temporarily then:
-    ```
-    docker run --rm -p 8000:8000 -e MODEL_NAME=gpt2 -e PYTHONUNBUFFERED=1 text-generator:latest`, to stop the container: `docker stop <container_id>
-    ```
+   ```
+    docker run --rm -p 8000:8000 -e MODEL_NAME=gpt2 -e PYTHONUNBUFFERED=1 text-generator:latest
+   ```
+   to stop the container: `docker stop <container_id>`
+   
     If you want to run the Docker for long run:
     ```
     docker run -d -p 8000:8000 -e MODEL_NAME=gpt2 -e PYTHONUNBUFFERED=1 --name text_gen_container text-generator:latest
-    ``` to stop the container: Press `Ctrl+C`
+    ```
+    to stop the container: Press `Ctrl+C`
 
     Here you could change the `MODEL_NAME` if you want.
 
-4. Starting the Streamlit UI (This is an optional step, but can be executed for UI interface):
+4. **Starting the Streamlit UI** (This is an optional step, but can be executed for UI interface):
     Open another terminal after starting the FastAPI:
     ```
     streamlit run text_generation_service/ui.py
     ```
 
-5. Testing the API:
-    Open [http://localhost:8000/docs](http://localhost:8000/docs) for interactive Swagger docs.
-    Use a tool like **curl** or **Postman** to test the /generate endpoint:
-        ```bash
-        curl -X POST "http://localhost:8000/generate" \
-        -H "Content-Type: application/json" \
-        -d '{"prompt": "What is AI?", "max_new_tokens": 50}'
+5. **Testing the API**:
+   Open [http://localhost:8000/docs](http://localhost:8000/docs) for interactive Swagger docs.  
+   Use a tool like **curl** or **Postman** to test the `/generate` endpoint:
+
+   ```bash
+   curl -X POST "http://localhost:8000/generate" \
+   -H "Content-Type: application/json" \
+   -d '{"prompt": "What is AI?", "max_new_tokens": 50}'
 
 
 ### Option 3: Running with Docker Desktop:
 
-1. Pulling the image:
+1. **Pulling the image**:
     ```bash
     docker pull kartheek3197/text-generator:latest
 
-2. Starting the Container:
-    ```
-    docker run -d -p 8000:8000 -e MODEL_NAME=gpt2 -e PYTHONUNBUFFERED=1 --name text_gen_container text-generator:latest
-    ```
+2. **Starting the Container**:
+    Run the image in the docker desktop
 
-3. Testing the API:
-    Open [http://localhost:8000/docs](http://localhost:8000/docs) for interactive Swagger docs.
-    Use a tool like **curl** or **Postman** to test the /generate endpoint:
-        ```
-        curl -X POST "http://localhost:8000/generate" \
-        -H "Content-Type: application/json" \
-        -d '{"prompt": "What is AI?", "max_new_tokens": 50}'
-        ```
+3. **Testing the API**:
+   Open [http://localhost:8000/docs](http://localhost:8000/docs) for interactive Swagger docs.  
+   Use a tool like **curl** or **Postman** to test the `/generate` endpoint:
+
+   ```bash
+   curl -X POST "http://localhost:8000/generate" \
+   -H "Content-Type: application/json" \
+   -d '{"prompt": "What is AI?", "max_new_tokens": 50}'
+   
 ---
 
 ## Testing:
@@ -226,13 +229,13 @@ Unit tests have been written for the FastAPI application to verify that the core
    2. Framework: The tests are written using **Pytest**, a lightweight testing framework.
 
         You can run the tests using the following commands:
-        - Clone the repository:
+        - Clone the repository and run tests:
             ```bash
-            git clone <repository-url>
+            git clone https://github.com/kartheek3197/text-generation-service.git
             cd text-generation-service
-          ```
-        - pytest text_generation_service/tests --maxfail=1 --disable-warnings
-          ```
+           
+           pytest text_generation_service/tests --maxfail=1 --disable-warnings
+          
 
 ---
 
@@ -243,3 +246,9 @@ There is a lot of scope to improve this **Text-Generation Service**:
    2. **Contextual Importance**: If there is more importance to the internal database, then a **RAG (Rretrieval-Augmented-Generation)** model can be built which gets more accurate response since it will be taken from the internal data.
    3. **Fine-Tuning**: Using Open-source models and fine-tuning with the internal data would give use more appropriate responses from the LLMs.
    4. **Conversational Buffer Memory and Few shot learning**: Using large contexual length LLMs can help us built conversational chatbots along with few shot learning which will drastically improve the response from the service.
+
+---
+
+## Contact:
+
+This has been done for a demo purpose. Please do reach to kartheek3197@gmail.com for any queries.
